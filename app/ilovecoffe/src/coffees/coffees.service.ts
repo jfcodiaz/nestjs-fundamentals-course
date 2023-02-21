@@ -14,11 +14,12 @@ export class CoffeesService {
   ) {}
 
   findAll() {
-    return this.coffeeRepository.find({});
+    return this.coffeeRepository.find({relations: ['flavors']});
   }
 
   async findOne(id: string) {
     const coffee = await this.coffeeRepository.findOne({
+      relations: ['flavors'],
       where: {
         id: +id,
       }
