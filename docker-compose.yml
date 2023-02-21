@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  nodejs: 
+    build: ./docker/develop/node
+    ports:
+      - ${HTTP_PORT}:3000
+    volumes:
+      - .:/root/repo
+      - ./docker/develop/ssh:/root/.ssh
+      - ./docker/develop/git:/root/.git
+      - ./docker/develop/git/.gitconfig:/root/.gitconfig:ro
+    command: tail -F /dev/null
