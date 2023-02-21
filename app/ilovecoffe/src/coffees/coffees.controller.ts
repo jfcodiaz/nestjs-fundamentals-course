@@ -1,11 +1,20 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Res } from '@nestjs/common';
-import { response } from 'express';
+import { 
+  Body, 
+  Controller, 
+  Delete, 
+  Get,
+  Param,
+  Patch, 
+  Post, 
+  Query
+} from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
   @Get()
-  fillAll() {
-    return 'This action returns all coffess';
+  fillAll(@Query() parginationQuery) {
+    const { limit, offset } = parginationQuery;
+    return `This action returns all coffess. Limit: ${limit}, offset ${offset}`;
   }
 
   @Get(':id')
