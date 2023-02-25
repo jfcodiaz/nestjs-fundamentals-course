@@ -4,7 +4,6 @@ import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 import configModuleOptions from "./config.module.options";
 
 ConfigModule.forRoot(configModuleOptions);
-
 const configService = new ConfigService();
 
 export const DataSourceConfig: DataSourceOptions = {
@@ -16,8 +15,8 @@ export const DataSourceConfig: DataSourceOptions = {
   database: configService.get('DB_NAME'),
   entities: [`${__dirname}/../**/**/*.entity{.ts,.js}`],
   migrations: [`${__dirname}/../../migrations/*{.ts,.js}`],
-  synchronize: true,
-  migrationsRun: false,
+  synchronize: false,
+  migrationsRun: true,
   logging: false,
   namingStrategy: new SnakeNamingStrategy()
 }
