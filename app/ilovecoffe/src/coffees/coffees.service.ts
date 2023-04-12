@@ -8,7 +8,7 @@ import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 import { Event } from './../events//entities/event.entity'
 import { ConfigService } from './config-service/ConfigService';
-
+import { COFFEE_BRANDS, COFFEE_BRANDS_FACTORY } from './confees.constatns';
 
 @Injectable()
 export class CoffeesService {
@@ -19,9 +19,13 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     private readonly connection: Connection,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
+    @Inject(COFFEE_BRANDS) coffeeBrands: string[], 
+    @Inject(COFFEE_BRANDS_FACTORY) coffeeBrands2: string[]
   ) {
     configService.getName();
+    console.log(coffeeBrands);
+    console.log(coffeeBrands2);
   }
 
   findAll(parginationQuery: PaginationQueryDto) {
