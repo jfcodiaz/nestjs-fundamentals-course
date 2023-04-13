@@ -9,11 +9,11 @@ import { DataSourceConfig } from './config/data.source';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 
 @Module({
-  imports: [
+  imports: [ 
     ConfigModule.forRoot(configModuleOptions),
     TypeOrmModule.forRoot({...DataSourceConfig}),
     CoffeesModule,
-    CoffeeRatingModule,
+    CoffeeRatingModule
   ],
   controllers: [AppController],
   providers: [AppService],
