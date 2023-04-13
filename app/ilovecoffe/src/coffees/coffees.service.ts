@@ -8,7 +8,7 @@ import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 import { Event } from './../events//entities/event.entity'
 import { ConfigService } from './config-service/ConfigService';
-import { COFFEE_BRANDS, COFFEE_BRANDS_FACTORY } from './confees.constatns';
+import { COFFEE_BRANDS, COFFEE_BRANDS_ASYNC, COFFEE_BRANDS_FACTORY } from './confees.constatns';
 
 @Injectable()
 export class CoffeesService {
@@ -21,11 +21,13 @@ export class CoffeesService {
     private readonly connection: Connection,
     private readonly configService: ConfigService,
     @Inject(COFFEE_BRANDS) coffeeBrands: string[], 
-    @Inject(COFFEE_BRANDS_FACTORY) coffeeBrands2: string[]
+    @Inject(COFFEE_BRANDS_FACTORY) coffeeBrands2: string[],
+    @Inject(COFFEE_BRANDS_ASYNC) coffeeBrandsFromDb: string[],
   ) {
     configService.getName();
     console.log(coffeeBrands);
     console.log(coffeeBrands2);
+    console.log(coffeeBrandsFromDb);
   }
 
   findAll(parginationQuery: PaginationQueryDto) {
